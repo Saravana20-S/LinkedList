@@ -80,4 +80,34 @@ public class MyLinkedList<K> {
 
         return tempNode;
     }
+
+    // UC6: Method to delete the last element (PopLast)
+    public INode<K> popLast() {
+        if (this.head == null) {
+            return null;
+        }
+
+        INode<K> tempNode = this.head;
+
+        // If there's only one element in the list
+        if (this.head.equals(this.tail)) {
+            this.head = null;
+            this.tail = null;
+            return tempNode;
+        }
+
+        // Traverse until we find the second-to-last node
+        while (tempNode.getNext() != this.tail) {
+            tempNode = tempNode.getNext();
+        }
+
+        // Save the tail node to return it
+        INode<K> poppedTail = this.tail;
+
+        // Disconnect the last node and update the tail pointer
+        tempNode.setNext(null);
+        this.tail = tempNode;
+
+        return poppedTail;
+    }
 }
