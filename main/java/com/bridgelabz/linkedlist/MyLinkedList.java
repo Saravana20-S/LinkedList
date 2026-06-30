@@ -63,4 +63,21 @@ public class MyLinkedList<K> {
         // Point the destination node's next to the new node
         destNode.setNext(newNode);
     }
+
+    // UC5: Method to delete the first element (Pop)
+    public INode<K> pop() {
+        if (this.head == null) {
+            return null;
+        }
+        INode<K> tempNode = this.head;
+        // Shift head to point to the next node
+        this.head = this.head.getNext();
+
+        // If list becomes empty, set tail to null as well
+        if (this.head == null) {
+            this.tail = null;
+        }
+
+        return tempNode;
+    }
 }
