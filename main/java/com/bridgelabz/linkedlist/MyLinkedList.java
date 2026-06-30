@@ -35,4 +35,20 @@ public class MyLinkedList<K> {
         }
         System.out.println(myNodes);
     }
+
+
+    // UC3: Method to append elements to the end (Add to tail)
+    public void append(INode<K> newNode) {
+        if (this.head == null) {
+            this.head = newNode;
+        }
+        if (this.tail == null) {
+            this.tail = newNode;
+        } else {
+            // Link the current tail's next to the new node
+            this.tail.setNext(newNode);
+            // Move the tail pointer to the new node
+            this.tail = newNode;
+        }
+    }
 }
