@@ -110,4 +110,19 @@ public class MyLinkedList<K> {
 
         return poppedTail;
     }
+
+    // UC7: Method to search for a node by its key value
+    public INode<K> search(K key) {
+        INode<K> tempNode = this.head;
+
+        // Loop through the LinkedList until the end
+        while (tempNode != null) {
+            // Check if the current node's key matches the search key
+            if (tempNode.getKey().equals(key)) {
+                return tempNode; // Node found
+            }
+            tempNode = tempNode.getNext();
+        }
+        return null; // Node not found
+    }
 }
