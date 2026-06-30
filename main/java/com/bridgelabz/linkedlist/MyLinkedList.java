@@ -51,4 +51,16 @@ public class MyLinkedList<K> {
             this.tail = newNode;
         }
     }
+
+    // UC4: Method to insert a node after a specific node
+    public void insert(INode<K> destNode, INode<K> newNode) {
+        if (destNode == null) {
+            System.out.println("The destination node cannot be null.");
+            return;
+        }
+        // Set the new node's next to the destination node's next
+        newNode.setNext(destNode.getNext());
+        // Point the destination node's next to the new node
+        destNode.setNext(newNode);
+    }
 }
