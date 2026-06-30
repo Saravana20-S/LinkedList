@@ -1,0 +1,38 @@
+package com.bridgelabz.linkedlist;
+
+public class MyLinkedList<K> {
+    public INode<K> head;
+    public INode<K> tail;
+
+    public MyLinkedList() {
+        this.head = null;
+        this.tail = null;
+    }
+
+    // UC2: Method to add elements to the front (Prepend)
+    public void add(INode<K> newNode) {
+        if (this.tail == null) {
+            this.tail = newNode;
+        }
+        if (this.head == null) {
+            this.head = newNode;
+        } else {
+            // Point new node's next to the current head
+            newNode.setNext(this.head);
+            // Move head pointer to the new node
+            this.head = newNode;
+        }
+    }
+
+    // Helper method to display the linked list sequence
+    public void printMyNodes() {
+        StringBuffer myNodes = new StringBuffer("LinkedList Sequence: ");
+        INode<K> tempNode = head;
+        while (tempNode != null) {
+            myNodes.append(tempNode.getKey());
+            if (tempNode.getNext() != null) myNodes.append("->");
+            tempNode = tempNode.getNext();
+        }
+        System.out.println(myNodes);
+    }
+}
